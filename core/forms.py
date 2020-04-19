@@ -19,6 +19,19 @@ class CheckOutForm(forms.Form):
     zip = forms.CharField(widget=forms.TextInput(attrs={
         'class':'form-control'
     }))
-    same_billing_address = forms.BooleanField(required=False)
+    same_shipping_address = forms.BooleanField(required=False)
     save_info = forms.BooleanField(required=False)
     payment_option = forms.ChoiceField(widget=forms.RadioSelect,choices=PAYMENT_OTIONS)
+
+class CouponForm(forms.Form):
+    code = forms.CharField(widget=forms.TextInput(attrs={
+        'class':'form-control',
+        'placeholder': 'Promo Code',
+        'aria-label': 'Receipient\'s username',
+        'aria-describedby': 'basic-addon2'
+    }))
+
+class RefundForm(forms.Form):
+    ref_code = forms.CharField()
+    message = forms.CharField(widget=forms.Textarea)
+    email = forms.EmailField()
